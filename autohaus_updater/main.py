@@ -21,8 +21,8 @@ def is_git_repo(path):
 
 parser = argparse.ArgumentParser(description='Autohaus update server')
 parser.add_argument('--repo_wdir', type=str, required=True)
-parser.add_argument('--git_url', type=str, default="git@github.com:Coimbra1984/autohaus.git")
-parser.add_argument('--git_remote_origin', type=str, default="origin")
+parser.add_argument('--gitUrl', type=str, default="git@github.com:Coimbra1984/autohaus.git")
+parser.add_argument('--gitRemoteOrigin', type=str, default="origin")
 parser.add_argument('-f', action='store_true')
 parser.add_argument('--updateServerPort', type=int, default=5000)
 parser.add_argument('--updateServerBaseURL', type=str, default="/autohaus-update/api/v1.0/")
@@ -53,19 +53,19 @@ else:
             sys.exit('Path %s exists, is not empty and no git repository'%repo_wdir)
         else:
             repo = git.Repo(repo_wdir)        
-            if args.git_url in list(repo.remotes[args.git_remote_origin].urls):
-                print("...repo points to %s, this is ok"%(args.git_url))
+            if args.gitUrl in list(repo.remotes[args.gitRemoteOrigin].urls):
+                print("...repo points to %s, this is ok"%(args.gitUrl))
                 
                 print ("check if repo is dirty...")
                 if repo.is_dirty() and args.f == False:
                     sys.exit("Repo in path %s is dirty, stopping..."%(repo_wdir))
                 print ("...ok")
             else:
-                sys.exit("Repo in path %s doesn't point to %s"%(repo_wdir, args.git_url))
+                sys.exit("Repo in path %s doesn't point to %s"%(repo_wdir, args.gitUrl))
 
 if empty:
-    print("cloning %s into %s"%(args.git_url, repo_wdir))
-    git.Repo.clone_from(args.git_url, repo_wdir)
+    print("cloning %s into %s"%(args.gitUrl, repo_wdir))
+    git.Repo.clone_from(args.gitUrl, repo_wdir)
     print("...done")
     repo = git.Repo(repo_wdir)        
 
