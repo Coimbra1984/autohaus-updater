@@ -10,6 +10,7 @@ from threading import Thread
 import urllib.parse
 import time
 import json
+import autohaus_updater
 
 def is_git_repo(path):
     try:
@@ -237,7 +238,7 @@ app = flask.Flask("autohaus-update-server")
 @app.route(urllib.parse.urljoin(args.updateServerBaseURL, 'version'), methods=['GET', 'POST'])
 def version():
     if flask.request.method == "GET":
-        return flask.jsonify({"version": "0.0.0"}), 200
+        return flask.jsonify({"version": autohaus_updater.__version__}), 200
     else:
         data = flask.request.get_json()
         if not data:

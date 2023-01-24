@@ -7,7 +7,7 @@ __pycache__/
 *.so
 
 #version file
-autohaus/_version.py
+autohaus_updater/_version.py
 
 # Distribution / packaging
 .Python
