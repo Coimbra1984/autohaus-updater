@@ -26,7 +26,11 @@ dependencies = [
     "GitPython >= 3",
     "requests >= 2",
     "Flask >= 2",
+    "pip >= 22.3",
 ]
+
+[project.optional-dependencies]
+systemd = [ 'systemd >= 0.15']
 
 [project.urls]
 "Homepage" = "https://github.com/Coimbra1984/autohaus-updater"
