@@ -1,0 +1,28 @@
+[build-system]
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
+
+[tool.hatch.version]
+source = "vcs"
+
+[tool.hatch.build.hooks.vcs]
+version-file = "autohaus_updater/_version.py"
+
+[project]
+name = "autohaus-updater"
+dynamic = ["version"]
+authors = [
+  { name="Markus Proeller", email="markus.proeller@pieye.org" },
+]
+description = "update server for autohaus server"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/Coimbra1984/autohaus-updater"
+"Bug Tracker" = "https://github.com/Coimbra1984/autohaus-updater/issues"
