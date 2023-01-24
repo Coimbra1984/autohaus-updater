@@ -29,7 +29,6 @@ parser.add_argument('--updateServerBaseURL', type=str, default="/autohaus-update
 parser.add_argument('--updateServerHost', type=str, default="127.0.0.1")
 parser.add_argument('--mainServerPort', type=int, default=5001)
 parser.add_argument('--mainServerHost', type=str, default="127.0.0.1")
-parser.add_argument('--pipExecutable', type=str, default="pip")
 parser.add_argument('--pythonExecutable', type=str, default="python")
 
 
@@ -76,7 +75,7 @@ else:
     print("UNTAGGED local version, current commit of repo is %s"%(repo.head.object.hexsha))
 
 print("installing autohaus from local repo...")
-retval = subprocess.run([args.pipExecutable, 'install', '.'], stdout=subprocess.PIPE, cwd=repo_wdir)
+retval = subprocess.run([args.pythonExecutable, '-m', 'pip', 'install', '.'], stdout=subprocess.PIPE, cwd=repo_wdir)
 if retval.returncode != 0:
     sys.exit("error installing autohaus")
 
@@ -184,7 +183,7 @@ class Updater:
 
         print("performing pip update...")
         self.state = UpdateState.PIP_UPDATE
-        retval = subprocess.run([args.pipExecutable, 'install', '.'], stdout=subprocess.PIPE, cwd=repo_wdir)
+        retval = subprocess.run([args.pythonExecutable, '-m', 'pip', 'install', '.'], stdout=subprocess.PIPE, cwd=repo_wdir)
         if retval.returncode != 0:
             self.err.setError("pip error")
             self.state = UpdateState.IDLE
