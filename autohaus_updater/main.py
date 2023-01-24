@@ -272,8 +272,9 @@ def error():
 if __name__ == '__main__':
     print('Startup complete')
     try:
-        import systemd.daemon
-        systemd.daemon.notify('READY=1')
+        import sdnotify
+        n = sdnotify.SystemdNotifier()
+        n.notify("READY=1")
     except Exception as e:
         print("error notifying systemd: ", str(e))
     

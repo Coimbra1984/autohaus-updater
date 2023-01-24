@@ -30,7 +30,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-systemd = [ 'systemd >= 0.15']
+systemd = [ 'sdnotify >= 0.3']
 
 [project.urls]
 "Homepage" = "https://github.com/Coimbra1984/autohaus-updater"
