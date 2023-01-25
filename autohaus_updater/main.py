@@ -38,6 +38,7 @@ repo_wdir = args.repo_wdir
 
 print("check if %s exists..."%repo_wdir)
 folderExists = os.path.exists(repo_wdir)
+empty = True
 if folderExists == False:
     print("path doesn't exist, try to create it...")
     os.makedirs(repo_wdir, exist_ok=True)
